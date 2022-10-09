@@ -43,10 +43,6 @@ jobs:
             cmake.exe -G "MinGW Makefiles" ^
             -DCMAKE_BUILD_TYPE=Release ^
             -DBUILD_SHARED_LIBS=OFF ^
-            -DPM_USE_STATIC_RUNTIME=OFF ^
-            -DBUILD_PMDEFAULTS=OFF ^
-            -DBUILD_JAVA_NATIVE_INTERFACE=OFF ^
-            -DBUILD_PORTMIDI_TESTS=OFF ^
             -DCMAKE_INSTALL_PREFIX="build/${{ env.cmakeInstallationPath }}" -B./build &&^
             cd build && cmake --build . && cmake --install . 
             
