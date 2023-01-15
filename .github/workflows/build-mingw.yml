@@ -45,7 +45,7 @@ jobs:
             -DBUILD_SHARED_LIBS=OFF ^
             -DPA_ENABLE_DEBUG_OUTPUT=OFF ^
             -DPA_USE_SKELETON=OFF ^
-            -DCMAKE_INSTALL_PREFIX="build/${{ env.cmakeInstallationPath }}" -B./cmake-build &&^
+            -DCMAKE_INSTALL_PREFIX="cmake-build/${{ env.cmakeInstallationPath }}" -B./cmake-build &&^
             cd cmake-build && cmake --build . && cmake --install . 
             
       - name: Archive Release
