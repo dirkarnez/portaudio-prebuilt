@@ -43,6 +43,8 @@ jobs:
             cmake.exe -G "MinGW Makefiles" ^
             -DCMAKE_BUILD_TYPE=Release ^
             -DBUILD_SHARED_LIBS=OFF ^
+            -DPA_ENABLE_DEBUG_OUTPUT=OFF ^
+            -DPA_USE_SKELETON=OFF ^
             -DCMAKE_INSTALL_PREFIX="build/${{ env.cmakeInstallationPath }}" -B./build &&^
             cd build && cmake --build . && cmake --install . 
             
