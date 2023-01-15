@@ -37,7 +37,7 @@ jobs:
             set PATH=^
             ${{ github.workspace }}\mingw64;^
             ${{ github.workspace }}\mingw64\bin;^
-            ${{ github.workspace }}\cmake-3.24.0-windows-x86_64\bin;^
+            ${{ github.workspace }}\cmake-3.24.0-windows-x86_64\bin;
             gcc --version &&^
             cd portaudio &&^
             cmake.exe -G "MinGW Makefiles" ^
@@ -45,19 +45,19 @@ jobs:
             -DBUILD_SHARED_LIBS=OFF ^
             -DPA_ENABLE_DEBUG_OUTPUT=OFF ^
             -DPA_USE_SKELETON=OFF ^
-            -DCMAKE_INSTALL_PREFIX="build/${{ env.cmakeInstallationPath }}" -B./build &&^
-            cd build && cmake --build . && cmake --install . 
+            -DCMAKE_INSTALL_PREFIX="build/${{ env.cmakeInstallationPath }}" -B./cmake-build &&^
+            cd cmake-build && cmake --build . && cmake --install . 
             
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          directory: "portaudio/build/${{ env.cmakeInstallationPath }}"
+          directory: "portaudio/cmake-build/${{ env.cmakeInstallationPath }}"
           filename: "${{ env.mingwTargetZip }}"
           
       - name: Release prebuilt
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "portaudio/build/${{ env.cmakeInstallationPath }}/${{ env.mingwTargetZip }}"
+          artifacts: "portaudio/cmake-build/${{ env.cmakeInstallationPath }}/${{ env.mingwTargetZip }}"
           allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
