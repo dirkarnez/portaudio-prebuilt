@@ -9,12 +9,12 @@ on:
 jobs:
   build:
     name: Create Release
-    runs-on: windows-2019
+    runs-on: windows-latest
     env:
       libraryName: portaudio
       cmakeInstallationPath: portaudio-installation
       tagName: v19.7.0
-      mingwTargetZip: portaudio-${{ github.ref_name }}-x86_64-posix-seh-rev0-8.1.0.zip
+      mingwTargetZip: portaudio-${{ github.ref_name }}-mingw64-x86_64-posix-seh-rev0-8.1.0.zip
     steps:
       - name: check mingw version
         run: gcc --version
