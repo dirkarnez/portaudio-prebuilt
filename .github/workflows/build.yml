@@ -28,7 +28,7 @@ jobs:
     runs-on: windows-latest
     env:
       libraryName: portaudio
-      cmakeInstallationPath: marian-installation
+      cmakeInstallationPath: portaudio-installation
       tagName: v19.7.0
     steps:
     
